@@ -1,4 +1,4 @@
-html,
+/*html,
 body {
     background-color: lightblue;
     font-family: Arial, sans-serif;
@@ -27,5 +27,252 @@ body {
                 color: #0066cc;
             }
         }
+    }
+}*/
+
+:root {
+    --primary-color: #245c46;
+    --primary-dark: #194432;
+    --secondary-color: #e8f1eb;
+    --accent-color: #d5e7d9;
+    --text-color: #26352d;
+    --muted-color: #64736a;
+    --background-color: #f7f9f7;
+    --white: #ffffff;
+    --border-color: #e1e8e2;
+
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/*HEADER*/
+
+nav {
+    background-color: var(--primary-color);
+    padding: 18px 5%;
+    box-shadow: var(--shadow);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+nav a:focus-visible {
+    outline: 2px solid var(--white);
+    outline-offset: 5px;
+}
+
+/*-------*/
+main {
+    max-width: 1100px;
+    min-height: 70vh;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: var(--primary-dark);
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.05rem;
+    color: var(--muted-color);
+    margin-bottom: 25px;
+}
+
+/* HOME PAGE */
+
+.main-logo {
+    display: block;
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    margin: 35px auto 10px;
+    border-radius: 12px;
+}
+
+/*CATEGORIES PAGE*/
+
+main>ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin: 30px 0;
+    padding: 0;
+}
+
+main>ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+main>ul li:hover {
+    transform: translateY(-5px);
+}
+
+main>ul li img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+main>ul li strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    color: var(--white);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    nav {
+        padding: 15px 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 15px 20px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin: 20px 12px;
+        padding: 25px 18px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    main>ul {
+        grid-template-columns: 1fr;
+    }
+
+    .main-logo {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    main {
+        padding: 20px 14px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+a:focus-visible {
+    outline: 3px solid #a3c9ad;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
     }
 }
