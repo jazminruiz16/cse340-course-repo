@@ -97,4 +97,30 @@ VALUES
 (7, 2),
 (8, 4);
 
+INSERT INTO project_category (project_id,category_id)
+VALUES
+(8, 3),
+
+(9, 1),
+(9, 3),
+
+(10, 3),
+
+(11, 1),
+(11, 2),
+
+(12, 3),
+(12, 1),
+
+(13, 1),
+(13, 2),
+
+(14, 1),
+
+(15, 1),
+(15, 2),
+
+(16, 1),
+(16, 3);
+
 SELECT * FROM project_category;
