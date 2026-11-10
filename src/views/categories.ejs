@@ -8,14 +8,13 @@
         <p>Here are our service projects categories:</p>
         <ul>
             
-            <li><img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo"><strong>Environmental</strong>:
-                contact@greenharvest.org</li>
-            <li><img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo"><strong>Educational
-                </strong>: info@brightfuture.org</li>
-            <li><img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo"><strong>Community Service</strong>:
-                hello@unityserve.org</li>
-            <li><img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo"><strong>Health and Wellness
-                </strong>: info@brightfuture.org</li>
+            <% categories.forEach(category=> { %>
+                <li><img src="/images/unityserve-logo.png" alt="<%= category.category_name %> logo"><strong>
+                        <%= category.category_name %>
+                    </strong>
+                </li>
+                <% }); %>
+
             
         </ul>
     </main>
