@@ -27,6 +27,14 @@ app.use((req, res, next) => {
     }
     next(); // Pass control to the next middleware or route
 });
+
+// Middleware to make NODE_ENV available to all templates
+app.use((req, res, next) => {
+    res.locals.NODE_ENV = NODE_ENV;
+    next();
+});
+
+
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
