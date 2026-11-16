@@ -9,8 +9,10 @@
         <ul>
             
             <% categories.forEach(category=> { %>
-                <li><img src="/images/unityserve-logo.png" alt="<%= category.category_name %> logo"><strong>
-                        <%= category.category_name %>
+                <li><img src="/images/unityserve-logo.png" alt="<%= category.category_name %> logo"><a href="/category/<%= category.category_id %>"><strong>
+                        <a href="/category/<%= category.category_id %>">
+                            <%= category.category_name %>
+                        </a>
                     </strong>
                 </li>
                 <% }); %>
