@@ -8,9 +8,11 @@
         <ul>
             <% projects.forEach(project=> { %>
                 <li><strong>
-                        <%= project.project_date.toLocaleDateString('en-US', { month: 'long' , day: 'numeric' , year: 'numeric' }) %>
-                        : <%= project.title %>
-                    </strong>:( <%= project.name %> ) 
+                        <%= project.date.toLocaleDateString('en-US', { month: 'long' , day: 'numeric' , year: 'numeric' }) %>
+                        : <a href="/project/<%= project.project_id %>">
+                            <%= project.title %>
+                        </a>  
+                    </strong>:( <%= project.organization_name  %> ) 
                 </li>
                 <% }); %>
         </ul>
