@@ -1,7 +1,8 @@
 import { fileURLToPath } from 'url';
 import path from 'path';
 import express from 'express';
-
+import flash from './src/middleware/flash.js';
+import session from 'express-session'; //NEW
 import { testConnection } from './src/models/db.js';
 import router from './src/routes.js';
 
@@ -16,7 +17,20 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Allow Express to receive and process common POST data W04
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Set up session management W04
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 } // Session expires after 1 hour of inactivity
+}));
+
+// Use flash message middleware W04
+app.use(flash);
 /**
   * Configure Express middleware
   */
