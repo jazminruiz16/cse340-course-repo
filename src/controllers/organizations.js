@@ -89,9 +89,6 @@ const processEditOrganizationForm = async (req, res) => {
     const organizationId = req.params.id;
     // Check for validation errors
     const results = validationResult(req);
-    console.log("Name received:", req.body.name);
-    console.log("Name length:", req.body.name?.length);
-    console.log("Validation errors:", results.array());
     if (!results.isEmpty()) {
         // Validation failed - loop through errors
         results.array().forEach((error) => {
