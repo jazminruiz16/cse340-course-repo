@@ -1,6 +1,22 @@
+import { body, validationResult } from 'express-validator';
 // Import any needed model functions
 import { getAllCategories, getCategoryDetails, createCategory } from '../models/categories.js';
 import { getProjectsByCategoryId } from '../models/projects.js';
+
+
+// Define validation and sanitization rules for category form
+// Define validation rules for category form
+const categoryValidation = [
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required')
+        .isLength({ min: 3, max: 150 })
+        .withMessage('Category name must be between 3 and 150 characters')
+    
+];
+
+
 // Define any controller functions
 const showCategoriesPage = async (req, res) => {
     const categories = await getAllCategories();
@@ -26,6 +42,18 @@ const showNewCategoryForm = async (req, res) => {
     res.render('new-category', { title });
 }
 const processNewCategoryForm = async (req, res) => {
+    // Check for validation errors
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        // Validation failed - loop through errors
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+
+        // Redirect back to the new category form
+        return res.redirect('/new-category');
+    }
+
     const {name} = req.body;
 
     const categoryId = await createCategory(name);
@@ -35,4 +63,4 @@ const processNewCategoryForm = async (req, res) => {
 };
 
 // Export any controller functions
-export { showCategoriesPage, showCategoryDetailsPage, showNewCategoryForm, processNewCategoryForm };
+export { showCategoriesPage, showCategoryDetailsPage, showNewCategoryForm, processNewCategoryForm, categoryValidation };

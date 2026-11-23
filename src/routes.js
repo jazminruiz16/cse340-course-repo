@@ -8,8 +8,8 @@ import { testErrorPage } from './controllers/errors.js';
 import { showOrganizationDetailsPage } from './controllers/organizations.js';
 import { showProjectDetailsPage } from './controllers/projects.js';
 import { showCategoryDetailsPage } from './controllers/categories.js';
-import { showNewOrganizationForm, processNewOrganizationForm } from './controllers/organizations.js';
-import { showNewCategoryForm, processNewCategoryForm } from './controllers/categories.js';
+import { showNewOrganizationForm, processNewOrganizationForm, organizationValidation } from './controllers/organizations.js';
+import { showNewCategoryForm, processNewCategoryForm, categoryValidation } from './controllers/categories.js';
 
 const router = express.Router();
 
@@ -29,10 +29,11 @@ router.get('/new-organization', showNewOrganizationForm);
 // Route for new category page
 router.get('/new-category', showNewCategoryForm);
 
+
 // Route to handle new organization form submission
-router.post('/new-organization', processNewOrganizationForm);
+router.post('/new-organization', organizationValidation, processNewOrganizationForm);
 // Route to handle new category form submission
-router.post('/new-category', processNewCategoryForm);
+router.post('/new-category', categoryValidation, processNewCategoryForm);
 
 // error-handling routes
 router.get('/test-error', testErrorPage);
