@@ -201,7 +201,59 @@ footer p {
     border-color: #bee5eb;
 }
 
+/*Forms*/
+.form-container {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 35px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
 
+.form-group input,
+.form-group textarea,
+.form-group select {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: #1f2937;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.button2 {
+    display: inline-block;
+    padding: 11px 22px;
+    border: none;
+    border-radius: 7px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.button2 {
+    background-color: #27282909;
+    color: #080808;
+    text-decoration: none;
+}
+.button2:hover {
+    transform: translateY(-2px);
+}
 @media screen and (max-width: 768px) {
 
     nav {
