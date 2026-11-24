@@ -1,5 +1,6 @@
 import { getAllProjects, getUpcomingProjects, getProjectDetails, createProject, updateProject } from '../models/projects.js';
 import { getAllOrganizations } from '../models/organizations.js';
+import { getCategoriesByServiceProjectId } from '../models/categories.js';
 import { body, validationResult } from 'express-validator';
 
 const projectValidation = [
@@ -40,7 +41,8 @@ const showProjectDetailsPage = async (req, res) => {
     const projectId = req.params.id;
     const projectDetails = await getProjectDetails(projectId);
     const title = 'Project Details';
-    res.render('project', { title, projectDetails });
+    const categories = await getCategoriesByServiceProjectId(projectId);
+    res.render('project', { title, projectDetails, categories });
 };
 
 const showNewProjectForm = async (req, res) => {
