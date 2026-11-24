@@ -42,6 +42,32 @@ const getCategoryDetails = async (categoryId) => {
   return result.rows.length > 0 ? result.rows[0] : null;
 };
 
+const getCategoriesByServiceProjectId = async (projectId) => {
+  const query = `
+        SELECT
+          category.category_name,
+          category.category_id,
+          project.project_id,
+          project.title,
+          project.description,
+          project.project_date,
+          project.location
+
+        FROM project
+        INNER JOIN project_category
+          ON project.project_id = project_category.project_id
+          INNER JOIN category
+            ON project_category.category_id = category.category_id
+        WHERE project.project_id = $1
+        ORDER BY project_date;
+      `;
+
+  const queryParams = [projectId];
+  const result = await db.query(query, queryParams);
+
+  return result.rows;
+};
+
 /**
  * Creates a new category in the database.
  * @param {string} name - The name of the category.
@@ -112,4 +138,4 @@ const updateCategoryAssignments = async (projectId, categoryIds) => {
     await assignCategoryToProject(categoryId, projectId);
   }
 }
-export { getAllCategories, getCategoryDetails, createCategory, updateCategory, assignCategoryToProject, updateCategoryAssignments}  
+export { getAllCategories, getCategoryDetails, getCategoriesByServiceProjectId, createCategory, updateCategory, assignCategoryToProject, updateCategoryAssignments}  
